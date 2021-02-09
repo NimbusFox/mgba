@@ -15,6 +15,7 @@
 #endif
 #ifdef ENABLE_SCRIPTING
 #include <mgba/core/scripting.h>
+#include <mgba/feature/rpc.h>
 
 #ifdef ENABLE_PYTHON
 #include "platform/python/engine.h"
@@ -125,6 +126,10 @@ int main(int argc, char** argv) {
 
 	mCoreConfigLoadDefaults(&renderer.core->config, &opts);
 	mCoreLoadConfig(renderer.core);
+
+#if ENABLE_SCRIPTING
+	startRPC(2346, renderer.core->cpu);
+#endif
 
 	renderer.viewportWidth = renderer.core->opts.width;
 	renderer.viewportHeight = renderer.core->opts.height;

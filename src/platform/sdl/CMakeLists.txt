@@ -102,6 +102,7 @@ else()
 endif()
 
 if(ENABLE_SCRIPTING)
+    list(APPEND MAIN_SRC ${CMAKE_SOURCE_DIR}/src/feature/rpc/rpcserver.cpp)
 	if(BUILD_PYTHON)
 		list(APPEND PLATFORM_LIBRARY ${BINARY_NAME}-pylib)
 	endif()
